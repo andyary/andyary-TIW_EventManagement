@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+<link rel="stylesheet" type="text/css" media="all" href="CSS/mystyle.css" />
+<script src="utils.js" charset="utf-8" defer></script>
+<script src="eventManagement.js" charset="utf-8" defer></script>
+<script src="sort.js" charset="utf-8" defer></script>
+</head>
+<body>
+	<div align="right">
+		<a href="Logout">Logout</a>
+	</div>
+	<h1>Welcome to the Client-Server Event Management Home Page</h1>
+	<p>Welcome, user:  <span id="id_username"></span></p>
+	<div id="id_alert" class="alertmessage"></div>
+	<table>
+		<tr>
+			<td><table id="id_listcontainer" class="boxed">
+					<thead>
+						<tr>
+							<th class="sortable">Title</th>
+							<th class="sortable">Description</th>
+							<th class="sortable">Date</th>
+							<th>Details</th>
+						</tr>
+					</thead>
+					<tbody id="id_listcontainerbody">
+					</tbody>
+				</table> 
+				<form id="id_tableform" action="#">
+				<input type="button" value="Own Events" name="ownevent" class="ownevent"> 
+				<input type="button" value="Not Own Events" name="notownevent" class="notownevent"> 
+				<input type="button" value="Booked Events" name="booked" class="booked">
+				</form>
+				</td>
+			<td>
+			<table id="id_detailcontainer" class="boxed">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Description</th>
+							<th>Time</th>
+							<th>Date</th>
+							<th>Location</th>
+							<th>Max Attendees</th>
+							<th>Owner</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td id="id_title"></td>
+							<td id="id_description"></td>
+							<td id="id_time"></td>
+							<td id="id_date"></td>
+							<td id="id_location"></td>
+							<td id="id_maxattendees"></td>
+							<td id="id_owner"></td>
+						</tr>
+					</tbody>
+				</table> 
+				<form id="id_eventactions" action="#">
+				<input type="hidden" name="idevent">
+				<input type="button" value="Add Booking" name="addbooking" class="addbooking"> 
+				<input type="button" value="Remove Booking"	name="delbooking" class="delbooking"> 
+				<input type="button" value="Add Like" name="addlike" class="addlike">
+				</form></td>
+		</tr>
+		
+				<tr>
+			<td colspan="2" align="center">
+				<p>Use the wizard to create a new event</p>
+				<form id="id_createventform" action="#">
+					<fieldset>
+						Title: <input type="text" name="title" required> <br> 
+						Description: <input type="text" name="description" required><br>
+						<input type="button" name="next" value="next" class="next">
+					</fieldset>
+					<fieldset>
+						Time: <input type="time" name="time" required><br>
+						Date: <input type="date" name="date" required><br>
+						Location : <input type="text" name="location" required><br>
+						<input type="button" value="prev" name="prev" class="prev">
+						<input type="button" value="next" name="next" class="next">
+					</fieldset>
+					<fieldset>
+						Max Attendees: <input  type="number" name="maxattendee" required> <br>
+							<input type="button" value="prev" name="3-prev" class="prev"> 
+							<input type="button" value="cancel" name="cancel" class="cancel">
+						    <input type="button" value="submit" name="submit" class="submit">
+					</fieldset>
+				</form>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

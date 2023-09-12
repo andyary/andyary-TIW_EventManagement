@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+<link rel="stylesheet" type="text/css" media="all" href="../CSS/mystyle.css" th:href="@{/css/mystyle.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Home Page</h1>
+        <div class="top-right">
+            <span th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy HH:mm')}"></span>
+            <p th:text="${'Logged user: ' + session.user.username}"></p>
+            <a th:href="@{/Logout}">Logout</a>
+        </div>
+        <div class="sub-section">
+            <p class="sub-para">Prof. Bruschi - TIW 2023</p>
+            <p class="sub-para">Andrea Arienti</p>
+        </div>
+
+        <h2>Own Event Table</h2>
+        <div class="events-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                        <th>Max Attendees</th>
+<!--                         <th>Owner</th> -->
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="e : ${events}">
+                        <td th:text="${e.title}"></td>
+                        <td th:text="${e.description}"></td>
+                        <td th:text="${e.date}"></td>
+                        <td th:text="${e.time}"></td>
+                        <td th:text="${e.location}"></td>
+                        <td th:text="${e.maxattendees}"></td>
+<!--                         <td th:text="${e.owner}"></td> -->
+                        <td><a th:href="@{/GetEventDetails(idevent=${e.id})}">Details</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Not Own Event Table</h2>
+        <div class="events-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                        <th>Max Attendees</th>
+<!--                         <th>Owner</th> -->
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="e2 : ${events2}">
+                        <td th:text="${e2.title}"></td>
+                        <td th:text="${e2.description}"></td>
+                        <td th:text="${e2.date}"></td>
+                        <td th:text="${e2.time}"></td>
+                        <td th:text="${e2.location}"></td>
+                        <td th:text="${e2.maxattendees}"></td>
+<!--                         <td th:text="${e2.owner}"></td> -->
+                        <td><a th:href="@{/GetEventDetails(idevent=${e2.id})}">Details</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

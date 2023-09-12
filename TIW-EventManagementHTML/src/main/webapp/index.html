@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="css/mystyle.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-right">
+            <span th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy HH:mm')}"></span>
+        </div>
+        <h1>Welcome to the event management application</h1>
+        <div class="sub-section">
+            <p class="sub-para">Prof. Bruschi - TIW 2023</p>
+            <p class="sub-para">Andrea Arienti</p>
+        </div>
+
+        <div class="form-container">
+            <form class="login-form" action="CheckLogin" method="POST">
+                <h2>Login</h2>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="pwd" placeholder="Password" required>
+                <input type="submit" value="Login">
+                <p th:text="${errorMsg}"></p>
+            </form>
+
+            <form class="registration-form" action="CheckRegistration" method="POST">
+                <h2>Registration</h2>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="text" name="email" placeholder="Email" required>
+                <input type="password" name="password1" placeholder="Password" required>
+                <input type="password" name="password2" placeholder="Repeat Password" required>
+                <input type="submit" value="Register">
+                <p th:text="${errorMsg2}"></p>
+                <p th:text="${Msg}"></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

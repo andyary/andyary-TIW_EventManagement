@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Event Detail Page</title>
+<link rel="stylesheet" type="text/css" media="all"
+	href="../CSS/mystyle.css" th:href="@{/css/mystyle.css}" />
+</head>
+<body>
+	<div class="container">
+		<h1>Event Details</h1>
+		<div class="top-right">
+			<span
+				th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy HH:mm')}"></span>
+			<p th:text="${'Logged user: ' + session.user.username}"></p>
+			<a th:href="@{/Home}">Back to Home</a>
+		</div>
+		<div class="sub-section">
+			<p class="sub-para">Prof. Bruschi - TIW 2023</p>
+			<p class="sub-para">Andrea Arienti</p>
+		</div>
+		<div class="event-details">
+			<table>
+				<!-- 				<tr>
+					<th>User ID</th>
+					<td th:text="${session.user.id}"></td>
+				</tr> -->
+				<tr>
+					<th>Event ID</th>
+					<td th:text="${event.id}"></td>
+				</tr>
+				<tr>
+					<th>Title</th>
+					<td th:text="${event.title}"></td>
+				</tr>
+				<tr>
+					<th>Description</th>
+					<td th:text="${event.description}"></td>
+				</tr>
+				<tr>
+					<th>Time</th>
+					<td th:text="${event.time}"></td>
+				</tr>
+				<tr>
+					<th>Date</th>
+					<td th:text="${event.date}"></td>
+				</tr>
+				<tr>
+					<th>Location</th>
+					<td th:text="${event.location}"></td>
+				</tr>
+				<tr>
+					<th>Bookings / Max Attendees</th>
+					<td th:text="${cbookings} + ' / ' + ${event.maxattendees}"></td>
+				</tr>
+				<tr th:if="${bookable}">
+					<th>Bookings does not exceed max Attendees</th>
+					<td th:text="${bookable}"></td>
+				</tr>
+				<tr th:if="${booked}">
+					<th th:text="'Booked by ' + ${session.user.username}"></th>
+					<td th:text="${booked}"></td>
+				<tr th:if="${bookable and not booked}">
+					<th th:text="'Not yet booked by ' + ${session.user.username}"></th>
+					<td><a
+						th:href="@{/CreateBooking (idevent=${event.id}, iduser=${session.user.id})}">Book
+							Event</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
+
